@@ -1,0 +1,32 @@
+<h1>Resultados:</h1>
+<h3 id='horario'>Ultima atualização: <%= @dados['hg'] %></h3>
+<h3 id='apurados'>Porcentagem apurada: <%= @dados['pst'] %>% </h3>
+
+<table id='tabela'>
+    <thead>
+        <td>#</td>
+        <td>Nome</td>
+        <td>Votos</td>
+        <td>Porcentagem</td>
+    </thead>
+    <tbody>
+         <% @dados['cand'].each do |candidato| %>
+            <tr>
+            <td><%= candidato['seq'] %></td>
+            <td><%= candidato['nm'] %></td>
+            <td><%= candidato['vap'] %></td>
+            <td><%= candidato['pvap'] %>% </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<script type="text/javascript">     
+      function updateDiv() {
+        document.getElementById("horario").innerHTML = document.getElementById("horario").innerHTML ;
+        document.getElementById("apurados").innerHTML = document.getElementById("apurados").innerHTML ;
+        document.getElementById("tabela").innerHTML = document.getElementById("tabela").innerHTML ;
+      }
+
+      var timer = setInterval(updateDiv, 10000);
+</script>
